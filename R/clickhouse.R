@@ -101,7 +101,7 @@ setMethod("dbSendQuery", "clickhouse_connection", function(conn, statement, use 
   use <- match.arg(use)
 
   q <- sub("[; ]*;\\s*$", "", statement, ignore.case=T, perl=T)
-	has_resultset <- grepl("^\\s*(SELECT|SHOW)\\s+", statement, perl=T, ignore.case=T)
+	has_resultset <- grepl("^\\s*(SELECT|SHOW|WITH)\\s+", statement, perl=T, ignore.case=T)
 
 	if (has_resultset) {
 		if ( grepl(".*FORMAT\\s+\\w+\\s*$", statement, perl=T, ignore.case=T)) {
